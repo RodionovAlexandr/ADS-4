@@ -18,13 +18,14 @@ int countPairs2(int *arr, int len, int value) {
   int elem1 = 0;
   int elem2 = 0;
   int how = 0;
+  int middle =0;
   while (beg < end) {
       elem1 = *(arr + beg);
       elem2 = *(arr + end);
       if (elem1 + elem2 < value) {
           beg += 1;
       }
-       if (elem1 == elem2 and elem1 + elem2 == value) {
+       if (elem1 == elem2 && elem1 + elem2 == value) {
             middle = end;
             while (middle > beg) {
                 middle -= 1;
