@@ -31,7 +31,6 @@ int countPairs2(int *arr, int len, int value) {
           } else {
               end--;
           }
-      }
   }
   return how;
   return 0;
