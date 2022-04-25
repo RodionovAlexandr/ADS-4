@@ -27,8 +27,8 @@ int countPairs2(int *arr, int len, int value) {
           if (elem1 + elem2 == value) {
               how += 1;
               beg += 1;
-          } 
-          if(elem1 + elem2 > value) {
+          }
+          if (elem1 + elem2 > value) {
               end--;
           }
   }
@@ -62,6 +62,7 @@ int countPairs3(int *arr, int len, int value) {
                     end += (rightp - end) / 2;
                     elem2 = *(arr + end);
                     if (elem2 + elem1 == value) {
+                        if (i == end) how -= 1;
                         *(arr + i) = -2147483648;
                         elem3 = elem2;
                         while (elem3 == elem2) {
@@ -87,6 +88,7 @@ int countPairs3(int *arr, int len, int value) {
                     }
                     elem2 = *(arr + end);
                     if (elem2 + elem1 == value) {
+                        if (i == end) how -= 1;
                         *(arr + i) = -2147483648;
                         elem3 = elem2;
                         while (elem3 == elem2) {
