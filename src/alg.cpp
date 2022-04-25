@@ -35,7 +35,11 @@ int countPairs2(int *arr, int len, int value) {
        } else {
           if (elem1 + elem2 == value) {
               how += 1;
-              beg += 1;
+              b += 1;
+                if (elem2 != *(arr + end - b)) {
+                    beg += 1;
+                    b = 0;
+                }
           }
           }
           if (elem1 + elem2 > value) {
