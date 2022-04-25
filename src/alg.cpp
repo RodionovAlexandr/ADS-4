@@ -24,9 +24,18 @@ int countPairs2(int *arr, int len, int value) {
       if (elem1 + elem2 < value) {
           beg += 1;
       }
+       if (elem1 == elem2 and elem1 + elem2 == value) {
+            middle = end;
+            while (middle > beg) {
+                middle -= 1;
+                how += 1;
+            }
+            beg += 1;
+       } else {
           if (elem1 + elem2 == value) {
               how += 1;
               beg += 1;
+          }
           }
           if (elem1 + elem2 > value) {
               end--;
@@ -55,28 +64,27 @@ int countPairs3(int *arr, int len, int value) {
             c = 0;
             while (elem2 + elem1 != value) {
                 c += 1;
-                if (*(arr + i) == -2147483648) break;
                 if (c == len) break;
                 if (value - elem1 > elem2) {
                     leftp = end;
                     end += (rightp - end) / 2;
                     elem2 = *(arr + end);
+                    if (i == end) break;
                     if (elem2 + elem1 == value) {
-                        if (i == end) how -= 1;
                         *(arr + i) = -2147483648;
                         elem3 = elem2;
+                        how += 1;
                         while (elem3 == elem2) {
-                            how += 1;
                             beg += 1;
                             elem3 = *(arr + end + beg);
+                            if (elem3 == elem2) how += 1;
                         }
                         elem3 = elem2;
+                        beg = 0;
                         while (elem3 == elem2) {
                             beg += 1;
                             elem3 = *(arr + end - beg);
-                            if (elem3 == elem2) {
-                                how += 1;
-                            }
+                            if (elem3 == elem2) how += 1;
                         }
                     }
                 } else {
@@ -88,21 +96,19 @@ int countPairs3(int *arr, int len, int value) {
                     }
                     elem2 = *(arr + end);
                     if (elem2 + elem1 == value) {
-                        if (i == end) how -= 1;
                         *(arr + i) = -2147483648;
                         elem3 = elem2;
                         while (elem3 == elem2) {
                             how += 1;
                             beg += 1;
                             elem3 = *(arr + end + beg);
+                            if (elem3 == elem2) how += 1;
                         }
                         elem3 = elem2;
                         while (elem3 == elem2) {
                             beg += 1;
                             elem3 = *(arr + end - beg);
-                            if (elem3 == elem2) {
-                                how += 1;
-                            }
+                            if (elem3 == elem2) how += 1;
                         }
                     }
                 }
