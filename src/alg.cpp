@@ -83,8 +83,7 @@ int countPairs3(int *arr, int len, int value) {
                     rightp = end;
                     if (end == 1) {
                         end = 0;
-                    }
-                    else {
+                    } else {
                         end -= (end - leftp) / 2;
                     }
                     elem2 = *(arr + end);
