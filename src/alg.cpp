@@ -42,24 +42,24 @@ int countPairs3(int *arr, int len, int value) {
     int middle;
     while (beg < end) {
         middle = (beg + end) / 2;
-        if (*(arr+middle) > value) {
+        if (arr[middle] > value) {
             end = middle;
         } else {
             beg = middle + 1;
         }
     }
-    for (int i; *(arr+i) <= half; i++) {
+    for (int i; arr[i] <= half; i++) {
         beg = i + 1;
-        searchelement = value - *(arr+i);
+        searchelement = value - arr[i];
         while (beg < end) {
-            int middle = (beg + end) / 2;
-            if (*(arr+middle) < searchelement) {
+            middle = (beg + end) / 2;
+            if (arr[middle] < searchelement) {
                 beg = middle + 1;
             } else {
                 end = middle;
             }
         }
-        while (*(arr+beg) == searchelement) {
+        while (arr[beg] == searchelement) {
             how++;
             beg++;
         }
