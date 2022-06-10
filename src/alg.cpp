@@ -48,7 +48,7 @@ int countPairs3(int *arr, int len, int value) {
             beg = middle + 1;
         }
     }
-    for (int i; arr[i] <= half; i++) {
+    for (int i=0; arr[i] <= half; i++) {
         beg = i + 1;
         searchelement = value - arr[i];
         while (beg < end) {
