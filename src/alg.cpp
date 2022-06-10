@@ -51,75 +51,36 @@ int countPairs2(int *arr, int len, int value) {
   return 0;
 }
 int countPairs3(int *arr, int len, int value) {
-  int elem1 = 0;
-        int elem2 = 0;
-        int elem3 = 0;
-        int end = 0;
-        int beg = 0;
-        int c = 0;
-        int leftp = 0;
-        int rightp = len;
-        int how = 0;
-        for (int i = 0; i < len; i++) {
-            elem1 = *(arr + i);
-            elem2 = 0;
-            elem3 = 0;
-            rightp = len;
-            end = 0;
-            beg = 0;
-            c = 0;
-            while (elem2 + elem1 != value) {
-                c += 1;
-                if (c == len) break;
-                if (value - elem1 > elem2) {
-                    leftp = end;
-                    end += (rightp - end) / 2;
-                    elem2 = *(arr + end);
-                    if (i == end) break;
-                    if (elem2 + elem1 == value) {
-                        *(arr + i) = -2147483648;
-                        elem3 = elem2;
-                        how += 1;
-                        while (elem3 == elem2) {
-                            beg += 1;
-                            elem3 = *(arr + end + beg);
-                            if (elem3 == elem2) how += 1;
-                        }
-                        elem3 = elem2;
-                        beg = 0;
-                        while (elem3 == elem2) {
-                            beg += 1;
-                            elem3 = *(arr + end - beg);
-                            if (elem3 == elem2) how += 1;
-                        }
-                    }
-                } else {
-                    rightp = end;
-                    if (end == 1) {
-                        end = 0;
-                    } else {
-                        end -= (end - leftp) / 2;
-                    }
-                    elem2 = *(arr + end);
-                    if (elem2 + elem1 == value) {
-                        *(arr + i) = -2147483648;
-                        elem3 = elem2;
-                        while (elem3 == elem2) {
-                            how += 1;
-                            beg += 1;
-                            elem3 = *(arr + end + beg);
-                            if (elem3 == elem2) how += 1;
-                        }
-                        elem3 = elem2;
-                        while (elem3 == elem2) {
-                            beg += 1;
-                            elem3 = *(arr + end - beg);
-                            if (elem3 == elem2) how += 1;
-                        }
-                    }
-                }
+    int how = 0;
+    int half = value / 2;
+    int searchelement;
+    int end = len;
+    int beg = 0;
+    int middle;
+    while (beg < end) {
+        mid = (beg + end) / 2;
+        if (*(arr+middle) > value) {
+            end = middle;
+        }
+        else {
+            beg = middle + 1;
+        }
+    }
+    for (int i; *(arr+i) <= half; i++) {
+        beg = i + 1;
+        searchelement = value - *(arr+i);
+        while (beg < end) {
+            int middle = (beg + end) / 2;
+            if (*(arr+middle) < searchelement) {
+                beg = middle + 1;
+            } else {
+                end = mid;
             }
         }
-        return how;
-  return 0;
+        while (*(arr+beg) == searchelement) {
+            how++;
+            beg++;
+        }
+    }
+    return how;
 }
