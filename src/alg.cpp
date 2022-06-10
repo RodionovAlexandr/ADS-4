@@ -58,11 +58,10 @@ int countPairs3(int *arr, int len, int value) {
     int beg = 0;
     int middle;
     while (beg < end) {
-        mid = (beg + end) / 2;
+        middle = (beg + end) / 2;
         if (*(arr+middle) > value) {
             end = middle;
-        }
-        else {
+        } else {
             beg = middle + 1;
         }
     }
@@ -74,7 +73,7 @@ int countPairs3(int *arr, int len, int value) {
             if (*(arr+middle) < searchelement) {
                 beg = middle + 1;
             } else {
-                end = mid;
+                end = middle;
             }
         }
         while (*(arr+beg) == searchelement) {
